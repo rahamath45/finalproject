@@ -1,5 +1,5 @@
 import  { useEffect, useState } from "react";
-import { getAllTrainers } from "../Api/trainers";
+import { getAllTrainers } from "../api/trainers";
 import ReviewSection from "../Components/ReviewSection";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
