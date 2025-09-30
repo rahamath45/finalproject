@@ -45,7 +45,7 @@ const fetchTrainers = async () => {
         {/* Trainer Photo */}
         {trainer.photo && (
           <img
-            src={`http://localhost:8050/uploads/${trainer.photo.replace(/\\/g, "/")}`}
+            src={`${import.meta.env.VITE_BASE_URL}/uploads/${trainer.photo.replace(/\\/g, "/")}`}
             alt={trainer.name}
             className="w-32 h-32 object-cover rounded-full shadow-md border-4 border-pink-200"
           />
@@ -64,7 +64,7 @@ const fetchTrainers = async () => {
         {/* Trainer Video */}
         {trainer.introVideo && (
           <video
-            src={`http://localhost:8050/uploads/${trainer.introVideo.replace(/\\/g, "/")}`}
+            src={`${import.meta.env.VITE_BASE_URL}/uploads/${trainer.introVideo.replace(/\\/g, "/")}`}
             controls
             className="w-full max-h-56 rounded-xl shadow-md mt-4"
           />
