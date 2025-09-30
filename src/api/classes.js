@@ -1,4 +1,5 @@
-import  api from "./api/index";
+import api from "./index";
+
 
 
 

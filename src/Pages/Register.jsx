@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const { register } = useAuth();
   const nav = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", password: "", role: "user" });
+  const [form, setForm] = useState({ name: "", email: "", password: "", role: "user",fitnessGoals:"Yoga" });
   const [msg, setMsg] = useState("");
 
   const handle = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -15,6 +15,9 @@ export default function Register() {
    
     try {
       const res = await register(form);
+      console.log("Submitting form:", form);
+
+      console.log(res)
       setMsg(res.message);
       if (form.role === "trainer") nav("/trainers/");
       else nav("/login");
@@ -44,6 +47,12 @@ export default function Register() {
           className="w-full px-4 py-2 border rounded-lg  outline-none">
           <option value="user">User</option>
           <option value="trainer">Trainer</option>
+        </select>
+         <select name="fitnessGoals" value={form.fitnessGoals} onChange={handle} 
+          className="w-full px-4 py-2 border rounded-lg  outline-none">
+          <option value="Yoga">Yoga</option>
+          <option value="Strength">Strength</option>
+          <option value="Cardio">Cardio</option>
         </select>
         <button type="submit" className="w-full bg-indigo-600 text-white p-2 rounded">Register</button>
       </form>

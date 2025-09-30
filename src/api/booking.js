@@ -1,4 +1,4 @@
-import api from "./api/index";
+import api from "./index";
 
 // Create a new booking
 export const createBooking = (payload) => api.post("/booking", payload);
@@ -14,4 +14,9 @@ export const rescheduleBooking = (id, payload) =>
 export const cancelBooking = (id) => api.delete(`/booking/${id}`);
 
 export const processPayment = (payload) =>
-  api.post("/payment/process-payment", payload); 
+  api.post("/payments/process-payment", {
+    token: payload.token,      // paymentMethod.id from frontend
+    amount: payload.amount,    // amount in cents
+    bookingId: payload.bookingId,
+  });
+

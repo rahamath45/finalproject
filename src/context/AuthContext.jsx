@@ -19,6 +19,7 @@ export function AuthProvider({children}){
        const register = async (payload) => {
     const res = await authApi.register(payload);
     const { token: t, user: u } = res.data.data;
+     console.log(res.data.data)
     setToken(t); setUser(u);
     return res.data;
   };
