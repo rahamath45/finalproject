@@ -26,10 +26,10 @@ export default function UpdateTrainer() {
         setSpecialization(t.specialization);
         setIntroMessage(t.introMessage);
           if (t.photo) {
-          setPhotoPreview(`${import.meta.env.VITE_BASE_URL}/uploads/${t.photo.replace(/\\/g, "/")}`);
+          setPhotoPreview(`https://finalprojct-b.onrender.com/uploads/${t.photo.replace(/\\/g, "/")}`);
         }
         if (t.introVideo) {
-          setIntroVideoPreview(`${import.meta.env.VITE_BASE_URL}/uploads/${t.introVideo.replace(/\\/g, "/")}`);
+          setIntroVideoPreview(`https://finalprojct-b.onrender.com/uploads/${t.introVideo.replace(/\\/g, "/")}`);
         }
       } catch (err) {
         console.error("Failed to fetch trainer", err);

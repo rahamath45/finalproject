@@ -1,16 +1,62 @@
-# React + Vite
+### Fitness Booking Platform 🏋️‍♂️💻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Fitness Trainer & Class Booking Platform built with React (Vite) + TailwindCSS on the frontend and Node.js + Express + MongoDB on the backend. Supports authentication, trainer management, class bookings, Stripe payments, and deployment with Render & Netlify.
 
-Currently, two official plugins are available:
+### 🚀 Features
+## 👤 Authentication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Register, login, logout with JWT
 
-## React Compiler
+Protected routes (role-based: user / trainer)
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧑‍🏫 Trainers
 
-## Expanding the ESLint configuration
+View all trainers with profile photos + intro videos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Trainers can create & update their profiles
+
+## 📚 Classes
+
+Users can view available classes
+
+Trainers can create and manage classes
+
+## 📅 Bookings
+
+Users can book classes
+
+View upcoming bookings
+
+## 💳 Payments
+
+Integrated with Stripe using @stripe/react-stripe-js
+
+Secure card payments with test mode support
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+React (Vite)
+
+TailwindCSS
+
+React Router DOM
+
+Axios
+
+### Backend
+
+Node.js
+
+Express.js
+
+MongoDB (Mongoose)
+
+Multer (for file uploads)
+
+Stripe SDK
+
+### if you back home page ..you click the fitapp header is navigate to home page...then user click the classes see the avaliable classes 
+
+### Also click booking button its show booking page its confirm you click payment button after completed the payment you booking is confirm
