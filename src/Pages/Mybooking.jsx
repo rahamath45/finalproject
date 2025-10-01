@@ -26,7 +26,7 @@ export default function MyBookings() {
     if (!newDate) return;
      alert("⏳ Rescheduling booking...");
     try {
-      await rescheduleBooking(id, { newDate });
+     const res = await rescheduleBooking(id, { newDate });
       alert( res.data?.message || "✅ Booking rescheduled!");
       fetchBookings();
     } catch (err) {
@@ -38,7 +38,7 @@ export default function MyBookings() {
     if (!window.confirm("Cancel this booking?")) return;
     alert("⏳ Cancelling booking...");
     try {
-        await cancelBooking(id);
+      const res =  await cancelBooking(id);
       alert( res.data?.message || "❌ Booking cancelled");
       fetchBookings();
     } catch (err) {
