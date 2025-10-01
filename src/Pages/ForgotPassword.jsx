@@ -14,7 +14,7 @@ export default function ForgotPassword() {
       const res = await forgotpassword(email);
       setMsg(res.data.message || "Check your email for reset link.");
     } catch (error) {
-      console.log(error?.response?.data?.message || "Unable to send reset link");
+      console.log(error?.response?.data?.message );
     }
   };
 
