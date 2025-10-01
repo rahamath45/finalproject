@@ -51,12 +51,15 @@ export default function PaymentPage() {
       });
 
       if (res.data.success) {
-        await createBooking({ classId: state.classId, date: state.date });
-        alert("✅ Payment + Booking successful!");
-        navigate("/bookings");
-      } else {
-        alert("❌ Payment failed, booking not created");
-      }
+  try {
+    const booking = await createBooking({ classId: state.classId, date: state.date });
+    console.log(booking);
+    alert("✅ Payment + Booking successful!");
+    navigate("/bookings");
+  } catch (err) {
+    alert("❌ Payment succeeded but booking failed: " + err.response?.data?.message);
+  }
+}
     } catch (err) {
       alert(err.response?.data?.message );
     } finally {

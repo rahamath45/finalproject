@@ -1,7 +1,11 @@
 import api from "./index";
 
 // Create a new booking
-export const createBooking = (payload) => api.post("/booking", payload);
+export const createBooking = async (payload) => {
+  const res = await api.post("/booking", payload);
+  return res.data; // return the actual booking data
+};
+
 
 // Get current user's bookings
 export const getMyBookings = () => api.get("/booking/me");
