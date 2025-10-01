@@ -1,7 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { createBooking, processPayment } from "../api/booking";
+import {  processPayment } from "../api/booking";
+import { v4 as uuidv4 } from "uuid";
 
 export default function PaymentPage() {
   const { state } = useLocation();
@@ -33,13 +34,15 @@ export default function PaymentPage() {
         setLoading(false);
         return;
       }
+      const attemptId = uuidv4();
+
 
       const res = await processPayment({
   token: paymentMethod.id,
   amount: state.amount * 100,
   classId: state.classId,
   date: state.date,
-  attemptId: state.attemptId // unique string
+  attemptId// unique string
 });
 
 if(res.data.success){
