@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { processPayment } from "../api/booking";
+import { createBooking, processPayment } from "../api/booking";
 
 export default function PaymentPage() {
   const { state } = useLocation();
