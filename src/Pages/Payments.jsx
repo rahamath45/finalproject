@@ -57,7 +57,7 @@ export default function PaymentPage() {
         alert("❌ Payment failed, booking not created");
       }
     } catch (err) {
-      alert(err.response?.data?.message || "Payment failed");
+      alert(err.response?.data?.message );
     } finally {
       setLoading(false);
     }
