@@ -30,7 +30,7 @@ export default function MyBookings() {
       alert( res.data?.message || "✅ Booking rescheduled!");
       fetchBookings();
     } catch (err) {
-      alert(err.response?.data?.message || "Reschedule failed");
+      alert(err.response?.data?.message );
     }
   };
 
@@ -42,7 +42,7 @@ export default function MyBookings() {
       alert( res.data?.message || "❌ Booking cancelled");
       fetchBookings();
     } catch (err) {
-      alert(err.response?.data?.message || "Cancel failed");
+      alert(err.response?.data?.message );
     }
   };
 
