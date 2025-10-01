@@ -1,8 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import {  processPayment } from "../api/booking";
-import { v4 as uuidv4 } from "uuid";
+import { createBooking, processPayment } from "../api/booking";
 
 export default function PaymentPage() {
   const { state } = useLocation();
@@ -30,34 +29,28 @@ export default function PaymentPage() {
       });
 
       if (error) {
-        alert("Stripe Error: " + error.message);
+        alert(error.message);
         setLoading(false);
         return;
       }
-      const attemptId = uuidv4();
 
-
+      // 2️⃣ Send payment to backend
       const res = await processPayment({
-  token: paymentMethod.id,
-  amount: state.amount * 100,
-  classId: state.classId,
-  date: state.date,
-  attemptId// unique string
-});
+        token: paymentMethod.id,
+        amount: state.amount * 100, // cents
+        bookingId: state.classId,
+      });
 
-if(res.data.success){
-  alert("✅ Payment + Booking successful!");
-  navigate("/bookings");
-} else {
-  alert("❌ Payment failed: " + res.data.message);
-}
-      
+      if (res.data.success) {
+        // 3️⃣ On success → create booking
+        await createBooking({ classId: state.classId, date: state.date });
+        alert("✅ Payment + Booking successful!");
+        navigate("/bookings");
+      } else {
+        alert("❌ Payment failed, booking not created");
+      }
     } catch (err) {
-            console.error("Payment error:", err);
-
-    // Backend or network error
-    const message = err?.response?.data?.message || err?.message || "Payment failed";
-    alert("❌ " + message);
+      alert(err.response?.data?.message || "Payment failed");
     } finally {
       setLoading(false);
     }
