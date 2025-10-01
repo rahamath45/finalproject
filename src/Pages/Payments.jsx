@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { createBooking, processPayment } from "../api/booking";
+import { processPayment } from "../api/booking";
 
 export default function PaymentPage() {
   const { state } = useLocation();
@@ -9,23 +9,30 @@ export default function PaymentPage() {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
+  const [postalCode, setPostalCode] = useState("");
+  const [name, setName] = useState("");
 
-  if (!state) {
-    return <p>No booking details found</p>;
-  }
+  if (!state) return <p>No booking details found</p>;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
     setLoading(true);
+
     try {
       const cardElement = elements.getElement(CardElement);
 
-      // 1️⃣ Create payment method
+      // 1️⃣ Create PaymentMethod with billing details
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: "card",
         card: cardElement,
+        billing_details: {
+          name,
+          address: {
+            postal_code: postalCode,
+          },
+        },
       });
 
       if (error) {
@@ -34,16 +41,16 @@ export default function PaymentPage() {
         return;
       }
 
-      // 2️⃣ Send payment to backend
+      // 2️⃣ Send paymentMethod.id to backend
       const res = await processPayment({
         token: paymentMethod.id,
-        amount: state.amount * 100, // cents
+        amount: state.amount * 100,
         bookingId: state.classId,
+        postalCode,
+        name,
       });
 
       if (res.data.success) {
-        // 3️⃣ On success → create booking
-        await createBooking({ classId: state.classId, date: state.date });
         alert("✅ Payment + Booking successful!");
         navigate("/bookings");
       } else {
@@ -66,7 +73,25 @@ export default function PaymentPage() {
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg space-y-4"
       >
-        <CardElement className="p-3 border rounded-lg" />
+        <input
+          type="text"
+          placeholder="Name on Card"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Postal Code"
+          value={postalCode}
+          onChange={(e) => setPostalCode(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <div className="p-3 border rounded-lg">
+          <CardElement />
+        </div>
         <button
           type="submit"
           disabled={!stripe || loading}
