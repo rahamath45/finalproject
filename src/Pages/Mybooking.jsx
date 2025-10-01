@@ -24,9 +24,10 @@ export default function MyBookings() {
   const handleReschedule = async (id) => {
     const newDate = prompt("Enter new date (YYYY-MM-DD):");
     if (!newDate) return;
+     alert("⏳ Rescheduling booking...");
     try {
       await rescheduleBooking(id, { newDate });
-      alert("✅ Booking rescheduled!");
+      alert( res.data?.message || "✅ Booking rescheduled!");
       fetchBookings();
     } catch (err) {
       alert(err.response?.data?.message || "Reschedule failed");
@@ -35,9 +36,10 @@ export default function MyBookings() {
 
   const handleCancel = async (id) => {
     if (!window.confirm("Cancel this booking?")) return;
+    alert("⏳ Cancelling booking...");
     try {
       await cancelBooking(id);
-      alert("❌ Booking cancelled");
+      alert( res.data?.message || "❌ Booking cancelled");
       fetchBookings();
     } catch (err) {
       alert(err.response?.data?.message || "Cancel failed");
