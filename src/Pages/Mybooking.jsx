@@ -38,7 +38,7 @@ export default function MyBookings() {
     if (!window.confirm("Cancel this booking?")) return;
     alert("⏳ Cancelling booking...");
     try {
-      await cancelBooking(id);
+        await cancelBooking(id);
       alert( res.data?.message || "❌ Booking cancelled");
       fetchBookings();
     } catch (err) {
