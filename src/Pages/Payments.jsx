@@ -51,6 +51,7 @@ export default function PaymentPage() {
       });
 
       if (res.data.success) {
+        await createBooking({ classId: state.classId, date: state.date });
         alert("✅ Payment + Booking successful!");
         navigate("/bookings");
       } else {
