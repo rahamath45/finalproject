@@ -34,21 +34,21 @@ export default function PaymentPage() {
         return;
       }
 
-      // 2️⃣ Send payment to backend
       const res = await processPayment({
-        token: paymentMethod.id,
-        amount: state.amount * 100, // cents
-        bookingId: state.classId,
-      });
+  token: paymentMethod.id,
+  amount: state.amount * 100,
+  classId: state.classId,
+  date: state.date,
+  attemptId: state.attemptId // unique string
+});
 
-      if (res.data.success) {
-        // 3️⃣ On success → create booking
-        await createBooking({ classId: state.classId, date: state.date });
-        alert("✅ Payment + Booking successful!");
-        navigate("/bookings");
-      } else {
-        alert("❌ Payment failed, booking not created");
-      }
+if(res.data.success){
+  alert("✅ Payment + Booking successful!");
+  navigate("/bookings");
+} else {
+  alert("❌ Payment failed: " + res.data.message);
+}
+      
     } catch (err) {
             console.error("Payment error:", err);
 
