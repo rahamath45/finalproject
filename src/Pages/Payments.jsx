@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { createBooking, processPayment } from "../api/booking";
+import {  processPayment } from "../api/booking";
 
 export default function PaymentPage() {
   const { state } = useLocation();
@@ -51,14 +51,15 @@ export default function PaymentPage() {
       });
 
       if (res.data.success) {
-  try {
-    const booking = await createBooking({ classId: state.classId, date: state.date });
-    console.log(booking);
-    alert("✅ Payment + Booking successful!");
-    navigate("/bookings");
-  } catch (err) {
-    alert("❌ Payment succeeded but booking failed: " + err.response?.data?.message);
-  }
+ 
+    alert("✅ Payment  successful!");
+       navigate("/create-booking", {
+    state: {
+      ...state,        // keep classId, classTitle, date, amount
+      paymentDone: true
+    }
+  });
+  
 }
     } catch (err) {
       alert(err.response?.data?.message );
