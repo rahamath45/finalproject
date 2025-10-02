@@ -10,12 +10,17 @@ export default function ForgotPassword() {
   const send = async (e) => {
     e.preventDefault();
     setMsg(""); 
-    try {
-      const res = await forgotpassword(email);
-      setMsg(res.data.message || "Check your email for reset link.");
-    } catch (error) {
-      console.log(error?.response?.data?.message );
-    }
+      try {
+    const res = await forgotpassword(email);
+    setMsg(res.data.message || "Check your email for reset link.");
+  } catch (error) {
+    console.log("Full error:", error); // for debugging
+    const msg =
+      error?.response?.data?.message || // backend error message
+      error?.message ||                // Axios/network error
+      "Something went wrong";
+    setMsg(msg);
+  }
   };
 
   return (
