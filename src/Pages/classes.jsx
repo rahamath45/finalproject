@@ -192,7 +192,7 @@ export default function ClassesPage() {
         </div>
 
         ) : (
-            <p>Trainer only can create a classes</p>
+            <p className="text-[#fff] text-xl">Trainer only can create a classes</p>
         )
       )}
 
@@ -229,7 +229,7 @@ export default function ClassesPage() {
          {activeTab === "recommended" && (
   user.role === "user" ? (
     <div className="mt-6">
-      <h2 className="text-xl font-bold mb-4">Recommended Classes</h2>
+      <h2 className="text-xl font-bold text-[#fff] mb-4">Recommended Classes</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {recommended.map((cls) => (
           <div key={cls._id} className="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">

@@ -38,6 +38,7 @@ export default function CreateBooking() {
   };
 
   return (
+    <div className="bg-[url(./assets/image(ansari).jpg)]  h-200">
     <div className="p-6 max-w-md mx-auto bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl shadow-lg">
       <h2 className="text-xl font-bold mb-4">Create Booking</h2>
       <p className="mb-2">Class: <strong>{location.state.classTitle}</strong></p>
@@ -78,6 +79,7 @@ export default function CreateBooking() {
           Confirm Booking
         </button>
       </form>
+    </div>
     </div>
   );
 }

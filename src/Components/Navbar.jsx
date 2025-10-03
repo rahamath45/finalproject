@@ -16,8 +16,8 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-3">
-          <Link to="/trainers">Trainers</Link>
-          <Link to="/classes">Classes</Link>
+          <Link to="/trainers" className="font-semibold">Trainers</Link>
+          <Link to="/classes"  className="font-semibold">Classes</Link>
 
           {user ? (
             <>
