@@ -11,8 +11,8 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-200 shadow relative">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-6xl">💪</div>
-        <Link to="/" className="text-3xl font-bold">FitApp</Link>
+       
+        <Link to="/" className="text-5xl font-bold"> 💪FitApp</Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-3">

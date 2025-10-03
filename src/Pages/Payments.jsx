@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import {  processPayment } from "../api/booking";
+import toast from "react-hot-toast";
 
 export default function PaymentPage() {
   const { state } = useLocation();
@@ -51,10 +52,7 @@ export default function PaymentPage() {
       });
 
       if (res.data.success) {
-       <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg animate-bounce">
-    ✅ Payment successful!
-  </div>
-    
+       toast.success("✅ Payment successful!");
        navigate("/create-booking", {
     state: {
       ...state,        // keep classId, classTitle, date, amount

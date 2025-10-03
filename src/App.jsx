@@ -17,6 +17,7 @@ import CreateBooking from './Pages/Booking';
 import PaymentPage from './Pages/Payments';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { Toaster } from 'react-hot-toast';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
@@ -27,6 +28,7 @@ function App() {
     <>
       <div className=' max-w-8xl mx-auto p-2'>
        <Navbar/>
+        <Toaster position="top-center" reverseOrder={false} />
        <Elements stripe={stripePromise}>
        <main className='max-w-6xl mx-auto p-4'> 
        <Routes>
