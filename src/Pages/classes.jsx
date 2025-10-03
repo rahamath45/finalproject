@@ -108,7 +108,7 @@ export default function ClassesPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/main-bg.jpg')" }}>
+    <div className="max-w-6xl mx-auto p-6 bg-[url(./assets/main-bg.jpg)]  h-200">
      
           {/* Tabs */}
       <div className="grid gap-4 mb-8  md:flex lg:flex ">
