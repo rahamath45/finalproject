@@ -50,7 +50,7 @@ export default function MyBookings() {
 
   return (
        <div className="pr-2 bg-[url(./assets/main-bg.jpg)]  h-430">
-  <h2 className="text-2xl font-bold mb-6 text-gray-800">📌 My Bookings</h2>
+  <h2 className="text-2xl font-bold mb-6 text-[#fff]">📌 My Bookings</h2>
   {bookings.length === 0 ? (
     <p className="text-gray-500 italic">No bookings found</p>
   ) : (

@@ -39,7 +39,7 @@ export default function CreateBooking() {
 
   return (
     <div className="bg-[url(./assets/image.jpg)]  h-200 max-w-6xl mx-auto p-6">
-    <div className="p-6 max-w-md mx-auto bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl shadow-lg">
+    <div className="p-6 max-w-md mx-auto bg-white rounded-2xl shadow-lg">
       <h2 className="text-xl font-bold mb-4">Create Booking</h2>
       <p className="mb-2">Class: <strong>{location.state.classTitle}</strong></p>
 
