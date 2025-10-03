@@ -51,8 +51,10 @@ export default function PaymentPage() {
       });
 
       if (res.data.success) {
- 
-    alert("✅ Payment  successful!");
+       <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg animate-bounce">
+    ✅ Payment successful!
+  </div>
+    
        navigate("/create-booking", {
     state: {
       ...state,        // keep classId, classTitle, date, amount
