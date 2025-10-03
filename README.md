@@ -1,15 +1,22 @@
-### Fitness Booking Platform 🏋️‍♂️💻
+#### Fitness Booking Platform 🏋️‍♂️💻
 
 A full-stack Fitness Trainer & Class Booking Platform built with React (Vite) + TailwindCSS on the frontend and Node.js + Express + MongoDB on the backend. Supports authentication, trainer management, class bookings, Stripe payments, and deployment with Render & Netlify.
 
-### 🚀 Features
-## 👤 Authentication
+# →important    
+  #### if user click forgot password button the reset password link send you email in spam box please check your spam in you account ...because sendgrid after deployed its take a time so its will put the spam box 
+  ### please check your spam in your account after booking ,rescheduleand cancel the classes all the emails are send the spam box
+
+
+
+
+#### 🚀 Features
+### 👤 Authentication
 
 Register, login, logout with JWT
 
 Protected routes (role-based: user / trainer)
 
-## 🧑‍🏫 Trainers
+### 🧑‍🏫 Trainers
 
 View all trainers with profile photos + intro videos
 
@@ -60,3 +67,4 @@ Stripe SDK
 ### if you back home page ..you click the fitapp header is navigate to home page...then user click the classes see the avaliable classes 
 
 ### Also click booking button its show booking page its confirm you click payment button after completed the payment you booking is confirm
+
